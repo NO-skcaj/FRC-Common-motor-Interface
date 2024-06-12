@@ -13,7 +13,7 @@ TalonFX(int CAN)
 }
 
 /// @brief does config, most just so happens to be PID
-void Config(float P, float I, float D, int max_voltage)
+void TalonFX::Config(float P, float I, float D, int max_voltage)
 {
   configs::TalonFXConfiguration talonFXConfigs{};
 
@@ -28,7 +28,7 @@ void Config(float P, float I, float D, int max_voltage)
 }
 
 /// @brief does config, most just so happens to be PIDV
-void Config(float P, float I, float D, float V, int max_voltage)
+void TalonFX::Config(float P, float I, float D, float V, int max_voltage)
 {
   configs::TalonFXConfiguration talonFXConfigs{};
 
@@ -44,40 +44,40 @@ void Config(float P, float I, float D, float V, int max_voltage)
 }
 
 /// @brief gets a CANcoder bc they are great
-void GetEncoder(int CAN)
+void TalonFX::GetEncoder(int CAN)
 {
   this->encoder = ctre::phoenix6::hardware::CANcoder(CAN, "rio");
 }
 
 /// @brief puts input (1, -1) to motor
-void SetSpeed(double input)
+void TalonFX::SetSpeed(double input)
 {
   motor.Set(input);
 }
 
 
-void SetAngle(float angle)
+void TalonFX::SetAngle(float angle)
 {
   motor.Set(this->angleController.Calculate(angle));
 }
 
 /// @brief just the current set speed
 /// @returns last setSpeed() input -1.0 - 1
-double GetSpeed()
+double TalonFX::GetSpeed()
 {
   return motor.Get();
 }
 
 
-double GetAngle()
+double TalonFX::GetAngle()
 {
   return ;
 }
 
 /// @brief Get the total distance in rotation counts from the Encoder
-double GetDistance()
+double TalonFX::GetDistance()
 {
   
 }
 
-}
+} // CIM
