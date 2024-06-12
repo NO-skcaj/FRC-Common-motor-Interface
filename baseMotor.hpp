@@ -8,7 +8,9 @@ class baseMotor
     // Initializaiton
     // baseMotor();
     // Configs
-    void SetPID(); // Ideally most config will be done here with per-brand configs, but will be eventually changed to out own config type
+    // Ideally most config will be done here with per-brand configs, but will be eventually changed to out own config type
+    void SetPID(); 
+    void GetEncoder();
     // Set commands aka power the motor
     void SetSpeed(); // Will go through PID
     void SetAngle();
