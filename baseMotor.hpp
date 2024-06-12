@@ -6,7 +6,7 @@ class baseMotor
 {
   public:
     // Initializaiton
-    baseMotor();
+    // baseMotor();
     // Configs
     void SetPID(); // Ideally most config will be done here with per-brand configs, but will be eventually changed to out own config type
     // Set commands aka power the motor
