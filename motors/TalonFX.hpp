@@ -7,17 +7,25 @@ namespace CMI
 class TalonFX
 {
   public:
-    TalonFX(P, I, D);
-    TalonFX(P, I, D, S, V); // weird thing that CTRE has in their docs, not super sure, but they seem to use it
+    // Hardware Initialization
+    TalonFX();
+    TalonFX(); 
+    void GetEncoder()       override;
     // Configs
-    void SetPID()        override;
-    void GetEncoder()    override;
+    void Config(float P, float I, float D, int max_voltage)          override;
+    void Config(float P, float I, float D, float V, int max_voltage) override; // weird thing that CTRE has in their docs, not super sure, but they seem to use it
     // Set commands aka power the motor
-    void SetSpeed()      override; // Will go through PID
-    void SetAngle()      override;
+    void SetSpeed()         override; // Will go through PID
+    void SetAngle()         override;
     // Get commands aka telemetry
-    double GetSpeed()    override;
-    double GetAngle()    override;
-    double GetDistance() override;
-}
+    double GetSpeed()       override;
+    double GetAngle()       override;
+    double GetDistance()    override;
+  private:
+    ctre::phoenix6::hardware::TalonFX  motor  {0, "rio"};
+    ctre::phoenix6::hardware::CANcoder encoder(0, "rio");
+    
+    frc::PIDcontroller angleController{1, 0, 0};
+    turningPidController.EnableContinuousInput(-3.14159, 3.14159);
+};
 } // CMI
