@@ -18,19 +18,8 @@ Implement:
 Something basic I want to be able to do is have a bunch of motors with associated encoders and be able to use the same functions regardless of brand.
 Example for TalonFX
 ```cpp
-// *** TalonFX Config
-configs::TalonFXConfiguration talonFXConfigs{};
-
-// set slot 0 gains and leave every other config factory-default
-configs::Slot0Configs& slot0Configs = talonFXConfigs.Slot0;
-slot0Configs.kP = 0.11;
-slot0Configs.kI = 0.5;
-slot0Configs.kD = 0.001;
-// ***
-
 CMI::Talonfx motor1{MotorID, EncoderID}; // Motor initialization
-motor1.SetConfig(talonFXConfigs);	      // Config 
-motor1.SetPID(P, I, D);
+motor1.Config(P, I, D, max_voltage);	      // Config
 
 units::degree_t motorAngle{motor1.GetAngle()};
 ```
