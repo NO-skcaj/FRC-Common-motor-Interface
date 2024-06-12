@@ -11,6 +11,7 @@ class TalonFX
     TalonFX(P, I, D, S, V); // weird thing that CTRE has in their docs, not super sure, but they seem to use it
     // Configs
     void SetPID()        override;
+    void GetEncoder()    override;
     // Set commands aka power the motor
     void SetSpeed()      override; // Will go through PID
     void SetAngle()      override;
